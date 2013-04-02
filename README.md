@@ -1,4 +1,3 @@
-
 ===========================================
 folderr - simple dir structure verification
 ===========================================
@@ -18,43 +17,42 @@ API
 
 Path is the base class for the File and Folder classes.
 
-*class* **Path**(relpath*[, shouldExist=True[, deleteIfExists=False[, error=True[, createIfNotExists=False[, desc=None]]]]]*)
+*class* **Path** (relpath[, shouldExist=True[, deleteIfExists=False[, error=True[, createIfNotExists=False[, desc=None]]]]])
 
-  **relpath**: *(str)* Relative path to the root directory given to the ``verify`` function
-  
-  **shouldExist**: *(bool)* sets whether or not the directory should exist at the time of evaluation
-  
-  **deleteIfExists**: *(bool)* contingency action if the path exists and shouldn't (shouldExist=False)
-
-  **error** *(bool)* raises Exception if True, otherwise reports a warning
-
-  **createIfNotExists**: *(bool)* contingency action if the path should exist and doesn't (shouldExist=True)
-
-  **desc** *(str)* customize error/warning text - can be used to instruct user to run previous step, etc.
+*  **relpath**: *(str)* 
+    * Relative path to the root directory given to the ``verify`` function
+*  **shouldExist**: *(bool)* 
+    * Sets whether or not the directory should exist at the time of evaluation
+*  **deleteIfExists**: *(bool)* 
+    *  contingency action if the path exists and shouldn't (shouldExist=False)
+*  **error** *(bool)* 
+    *  raises Exception if True, otherwise reports a warning
+*  **createIfNotExists**: *(bool)* 
+    *  contingency action if the path should exist and doesn't (shouldExist=True)
+*  **desc** *(str)* 
+    *  customize error/warning text - can be used to instruct user to run previous step, etc.
 
 
 *class* **Folder**(Path)
 
-    Path object for folders. Used to verify the existence of directories
+  Path object for folders. Used to verify the existence of directories
 
 *class* **File**(Path)
 
-    Path object for files. Used to verify the existence of files
+  Path object for files. Used to verify the existence of files
 
 *function* **verify**(root, *paths)
 
-    This is the main function of ``folderr`` which is used to verify the existing folder structure for correctness.
+  This is the main function of ``folderr`` which is used to verify the existing folder structure for correctness.
 
-    :param root: Root folder for verification
-    :type root: str
-    :param paths: conditions used to verify the folder structure
-    :type paths: list of Folder/File instances
+*  **root**: *(str)* 
+    *  Root folder for verification
+*  **paths**: *(list of Folder/File instances)* 
+    *  conditions used to verify the folder structure
 
 -------
 Example
 -------
-
-.. code-block:: python
 
     root = get_data_directory()
     date = ...
