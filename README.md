@@ -15,35 +15,33 @@ exist simply because the needed contents of the files are not known.
 API
 ---
 
-Path is the base class for the File and Folder classes.
+###### Folder / File classes
 
-*class* **Path** (relpath[, shouldExist=True[, deleteIfExists=False[, error=True[, createIfNotExists=False[, desc=None]]]]])
+The Folder and File classes are used as conditions to verify a folder structure. Their constructors have the following arguments.
 
 *  **relpath**: *(str)* 
     * Relative path to the root directory given to the ``verify`` function
+    * `required=True`
 *  **shouldExist**: *(bool)* 
     * Sets whether or not the directory should exist at the time of evaluation
+    * `default=True`
 *  **deleteIfExists**: *(bool)* 
     *  contingency action if the path exists and shouldn't (shouldExist=False)
+    * `default=False`
 *  **error** *(bool)* 
     *  raises Exception if True, otherwise reports a warning
+    * `default=True`
 *  **createIfNotExists**: *(bool)* 
     *  contingency action if the path should exist and doesn't (shouldExist=True)
+    * `default=False`
 *  **desc** *(str)* 
     *  customize error/warning text - can be used to instruct user to run previous step, etc.
+    * `default=None`
 
 
-*class* **Folder**(Path)
+###### *function* **verify**(root, *paths)
 
-  Path object for folders. Used to verify the existence of directories
-
-*class* **File**(Path)
-
-  Path object for files. Used to verify the existence of files
-
-*function* **verify**(root, *paths)
-
-  This is the main function of ``folderr`` which is used to verify the existing folder structure for correctness.
+This is the main function of ``folderr`` which is used to verify the existing folder structure for correctness.
 
 *  **root**: *(str)* 
     *  Root folder for verification
@@ -66,7 +64,7 @@ Example
 
 The ``verify`` function in the above code sample does the following:
 
-* Creates ``datadir/date`` if it doesn't exist
+* Creates ``root/date`` if it doesn't exist
 * By default, ``folderr`` raises an error unless ``error=False``
     * However, for the config file, ``error`` is not set and will raise an Exception if config.json doesn't exist
 * The 'reduce' folder should not exist at runtime and will be deleted if it exists.
